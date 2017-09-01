@@ -27,6 +27,8 @@ class CreateBookingsTable extends Migration
         });
     }
 
+    
+
     /**
      * Reverse the migrations.
      *
