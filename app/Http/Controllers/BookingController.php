@@ -54,6 +54,7 @@ class BookingController extends Controller
         $model->narrator = $request->narrator;
         $model->item = $request->item;
         $model->item_time = $request->item_time;
+        $model->company = $request->company;
 
         try{
             if ($model->save())
@@ -66,7 +67,7 @@ class BookingController extends Controller
         }
     }
     public function selectTime($sdata){
-        $model = Booking::where('date', urldecode($sdata))->get();
+        $model = Booking::where('date', $sdata)->get();
 
         $countTotal = 0;
         foreach ($model as $bookModel)
@@ -79,9 +80,7 @@ class BookingController extends Controller
                 $countTotal+= intval($bookModel->group_ppl);
             }
         }
-        if ($countTotal >30)
-            return json_encode(["rs" => "false"]);
-        else
-            return json_encode(["rs" => "true"]);
+
+        return json_encode(["rs" => $countTotal]);
     }
 }

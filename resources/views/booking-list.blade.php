@@ -16,6 +16,7 @@
         <th>形式</th>
         <th>团体人数</th>
         <th>解说</th>
+        <th>单位地址</th>
         <th>预约体验项目</th>
         <th>项目预约时间</th>
     </tr>
@@ -28,6 +29,7 @@
             <td>{{ $booking->type }}</td>
             <td>{{ $booking->group_ppl }}</td>
             <td>{{ $booking->narrator }}</td>
+            <td>{{ $booking->company }}</td>
             <td>{{ $booking->item }}</td>
             <td>{{ $booking->item_time }}</td>
         </tr>
