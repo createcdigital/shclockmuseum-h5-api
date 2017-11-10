@@ -66,7 +66,7 @@ class BookingController extends Controller
         }
     }
     public function selectTime($sdata){
-        $model = Booking::where('date', $sdata)->get();
+        $model = Booking::where('date', urldecode($sdata))->get();
 
         $countTotal = 0;
         foreach ($model as $bookModel)
@@ -76,7 +76,7 @@ class BookingController extends Controller
                 $countTotal+=1;
             }else
             {
-                $countTotal+= $bookModel->group_ppl;
+                $countTotal+= intval($bookModel->group_ppl);
             }
         }
         if ($countTotal >30)
