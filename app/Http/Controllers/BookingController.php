@@ -65,4 +65,23 @@ class BookingController extends Controller
             return json_encode(["rs" => "error, message:".$e->getMessage()]);
         }
     }
+    public function selectTime($sdata){
+        $model = Booking::where('date', $sdata)->get();
+
+        $countTotal = 0;
+        foreach ($model as $bookModel)
+        {
+            if($bookModel->type=="个人")
+            {
+                $countTotal+=1;
+            }else
+            {
+                $countTotal+= $bookModel->group_ppl;
+            }
+        }
+        if ($countTotal >30)
+            return json_encode(["rs" => "false"]);
+        else
+            return json_encode(["rs" => "true"]);
+    }
 }

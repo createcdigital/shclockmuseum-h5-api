@@ -14,3 +14,4 @@
 $app->get('/booking/list','BookingController@index');
 $app->get('/booking/create','BookingController@create');
 $app->post('/booking/store','BookingController@store');
+$app->get('/booking/selectCount/{sdata}','BookingController@selectTime');
